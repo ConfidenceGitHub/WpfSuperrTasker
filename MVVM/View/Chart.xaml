@@ -1,0 +1,55 @@
+﻿<Window x:Class="WpfSuperrTasker.MVVM.View.Chart"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="Chart" Height="350" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="35*"/>
+        </Grid.ColumnDefinitions>
+        <lvc:CartesianChart Background="WhiteSmoke" Grid.ColumnSpan="2">
+            <lvc:CartesianChart.Series>
+                <lvc:LineSeries Values="{Binding Values1}" 
+                       StrokeThickness="4" 
+                       StrokeDashArray="2" 
+                       Stroke="#FF8B8383" 
+                       Fill="Transparent" 
+                       LineSmoothness="0" 
+                       PointGeometry="{x:Null}" />
+                <lvc:LineSeries Values="{Binding Values2}" 
+                       StrokeThickness="2" 
+                       Stroke="#1C8FC5" 
+                       Fill="Transparent" 
+                       LineSmoothness="1" 
+                       PointGeometrySize="15" 
+                       />
+            </lvc:CartesianChart.Series>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis IsMerged="True">
+                    <lvc:Axis.Separator>
+                        <lvc:Separator StrokeThickness="1" StrokeDashArray="2">
+                            <lvc:Separator.Stroke>
+                                <SolidColorBrush Color="#404F56" />
+                            </lvc:Separator.Stroke>
+                        </lvc:Separator>
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis IsMerged="True">
+                    <lvc:Axis.Separator>
+                        <lvc:Separator StrokeThickness="1.5" StrokeDashArray="4">
+                            <lvc:Separator.Stroke>
+                                <SolidColorBrush Color="#404F56" />
+                            </lvc:Separator.Stroke>
+                        </lvc:Separator>
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+    </Grid>
+</Window>

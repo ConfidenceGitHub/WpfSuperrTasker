@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTemplate x:Key="&#216;" TargetType="Button">
+        <Grid Cursor="Hand">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup Name="CommonStates">
+                    <VisualState Name="Normal" />
+                    <VisualState Name="MouseOver">
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="buttonContent" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" To="#FF73A9D8" Duration="0" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="buttonContent" Storyboard.TargetProperty="Opacity" To=".5" Duration="0" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <ContentPresenter
+                                                  x:Name="buttonContent"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  Margin="1,4,1,9"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                <TextElement.Foreground>
+                    <SolidColorBrush Color="#FF333333"/>
+                </TextElement.Foreground>
+            </ContentPresenter>
+        </Grid>
+    </ControlTemplate>
+
+</ResourceDictionary>

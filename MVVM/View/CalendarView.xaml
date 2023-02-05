@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="WpfSuperrTasker.MVVM.View.CalendarView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewmodel="clr-namespace:WpfSuperrTasker.MVVM.ViewModel"       
+        Height="150" Width="152"
+        Background="Transparent"     
+        >
+
+    <UserControl.DataContext>
+        <viewmodel:CalendarViewModel/>
+    </UserControl.DataContext>
+  
+
+    <Border   Background="#FF6F3EC7" 
+           CornerRadius="10 10 5 5"  >
+   
+    <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width ="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Margin="0,0,-47,3" Width="150"
+                    Command="{Binding TodayCommand}"
+                    CommandParameter="{Binding ElementName=choceDate, Mode=OneWay}"
+                    Content="Сегодня">
+            </Button>
+        
+            <Button Grid.Row="1" Margin="0,0,-47,1"
+                    Command="{Binding TomorrowCommand}"
+                    CommandParameter="{Binding ElementName=choceDate, Mode=OneWay}"
+                    Content="Завтра" >
+                
+            </Button>
+            <Button Grid.Row="2" Margin="0,0,-47,1"
+                    Command="{Binding NoDateCommand}"
+                    CommandParameter="{Binding ElementName=choceDate, Mode=OneWay}"
+                    Content="Без даты">
+            </Button>
+
+            <DatePicker Grid.Row="3" x:Name="choceDate"
+             materialDesign:HintAssist.Hint="Выберите дату"             
+             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+             BorderBrush="White" Margin="0,0,1,0"/>
+        </Grid>
+    </Border>
+
+  
+</UserControl>
+
+

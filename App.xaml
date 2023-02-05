@@ -1,0 +1,69 @@
+﻿<Application x:Class="WpfSuperrTasker.App"            
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:view ="clr-namespace:WpfSuperrTasker.MVVM.View"
+             xmlns:viewModel ="clr-namespace:WpfSuperrTasker.MVVM.ViewModel"
+             StartupUri ="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/TextBoxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/TextBoxTaskCreateTheme.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <!-- 
+            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="{StaticResource Accent100}"/>
+            <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="{StaticResource Primary200Foreground}"/>
+            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="{StaticResource Primary500}"/>
+            <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="{StaticResource Primary500Foreground}"/>
+            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="{StaticResource Primary900Foreground}"/>
+            <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="{StaticResource Primary700Foreground}"/>
+            -->
+
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModel:TodayViewModel}">
+                <view:TodayView></view:TodayView>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:FutureViewModel}">
+                <view:FutureView></view:FutureView>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:CartesianChartViewModel}">
+                <view:CartesianChartView></view:CartesianChartView>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AllProjectsViewModel}">
+                <view:AllProjectsView></view:AllProjectsView >
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:CalendarViewModel}">
+                <view:CalendarView></view:CalendarView >
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:VersionViewModel}">
+                <view:VersionView></view:VersionView >
+            </DataTemplate>
+
+            <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
+                <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                    <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                      Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}"
+                                      RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                </Border>
+            </ControlTemplate>
+
+      
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

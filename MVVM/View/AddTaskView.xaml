@@ -1,0 +1,75 @@
+﻿<Window x:Name="window" x:Class="WpfSuperrTasker.MVVM.View.AddTaskView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:view="clr-namespace:WpfSuperrTasker.MVVM.View"
+             xmlns:viewmodel="clr-namespace:WpfSuperrTasker.MVVM.ViewModel"
+             ResizeMode="NoResize"
+             Height="180" Width="400"
+             WindowStyle="None"
+             AllowsTransparency="True"
+             Background="Transparent" WindowStartupLocation="Manual">
+
+    <Window.DataContext>
+        <viewmodel:AddTaskViewModel/>
+    </Window.DataContext>
+
+    <Border  Background="#FF6F3EC7"             
+            CornerRadius="10">
+
+        <Grid   >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBox Grid.Row="1" 
+                    Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                    BorderBrush="#89191818" 
+                    CaretBrush="#FFF1F1F1" SelectionBrush="#FFFDFDFD" 
+                    Background="#FF1D1D1D" Foreground="White" Margin="0,0,-237,0" />
+
+            <TextBox Grid.Row="2" TextWrapping="Wrap"
+                    Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+                    Background="#FF0C0B0B" 
+                    CaretBrush="#FFF9F9F9" Foreground="White" 
+                    SelectionBrush="White" Margin="0,0,-237,0"/>
+
+            <Button Grid.Row="3" Grid.Column="1" Width="150"
+                    Command="{Binding ShowCalendarCommand}"                    
+                    Foreground="White" Content="Срок выполнения" 
+                    Margin="4,5,2,0" 
+                    CommandParameter="{Binding ElementName=window, Mode=OneWay}"
+                    VerticalAlignment="Top"/>
+
+            <Button Grid.Row="4" HorizontalAlignment="Left" Grid.Column="1"
+                    x:Name="addTaskButton" Content="Добавить задачу" 
+                    Command="{Binding AddNewTaskCommand}"
+                    CommandParameter="{Binding ElementName=window, Mode=OneWay}"
+                    IsEnabled="{Binding EnableAddButton}"   
+                    Foreground="White"  Margin="252,14,-235,10" Width="145"  />
+            
+            <Button Grid.Row="4"  Grid.Column="1" HorizontalAlignment ="Left"
+                    Foreground="White"
+                    Command="{Binding CloseWindowCommand}"
+                    CommandParameter="{Binding ElementName=window, Mode=OneWay}"
+                    x:Name="escapeTaskButton" Content= "Отмена"                  
+                    Margin="161,14,-87,10" Width="86"   />
+
+             <Grid  x:Name="Calendar" Grid.Row="3" 
+                   Height="auto" MinHeight="0" 
+                   Margin="3,1,-2,0" Grid.RowSpan="2"
+                   Grid.ColumnSpan="2" />
+             </Grid>
+    </Border>
+</Window>
